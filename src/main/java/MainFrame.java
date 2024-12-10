@@ -420,7 +420,7 @@ public class MainFrame extends javax.swing.JFrame {
         ## 7. Contact and Support
         For assistance or inquiries, reach out to the project team:
         - **Email**: (To be edited)
-        - **Phone**: (To be editted)
+        - **Phone**: (To be edited)
 
         Thank you for using CALIS! We hope it makes managing lockers easier and more efficient.
         """);
