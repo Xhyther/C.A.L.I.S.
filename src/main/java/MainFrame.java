@@ -5,23 +5,29 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.*;
 
 //The main GUI frame
 public class MainFrame extends javax.swing.JFrame {
+    private Locker[][][] lockers = new Locker[3][5][5];
 
-    /**
-     * Creates new form MainFrame
-     */
+ 
+    
     public MainFrame() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Content Alayzer and Locker Inventory System");
-        
-       
+        for (int i = 0; i < lockers.length; i++) {
+
+            for (int j = 0; j < lockers[i].length; j++) {
+
+                for (int k = 0; k < lockers[i][j].length; k++) {
+
+                    lockers[i][j][k] = new Locker(i * 25 + j * 5 + k + 1);
+                }
+            }
+        }
     }
 
     /**
@@ -130,60 +136,6 @@ public class MainFrame extends javax.swing.JFrame {
         A73 = new javax.swing.JButton();
         A74 = new javax.swing.JButton();
         A75 = new javax.swing.JButton();
-        FloorD = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        A76 = new javax.swing.JButton();
-        A77 = new javax.swing.JButton();
-        A78 = new javax.swing.JButton();
-        A79 = new javax.swing.JButton();
-        A80 = new javax.swing.JButton();
-        A81 = new javax.swing.JButton();
-        A82 = new javax.swing.JButton();
-        A83 = new javax.swing.JButton();
-        A84 = new javax.swing.JButton();
-        A85 = new javax.swing.JButton();
-        A86 = new javax.swing.JButton();
-        A87 = new javax.swing.JButton();
-        A88 = new javax.swing.JButton();
-        A89 = new javax.swing.JButton();
-        A90 = new javax.swing.JButton();
-        A91 = new javax.swing.JButton();
-        A92 = new javax.swing.JButton();
-        A93 = new javax.swing.JButton();
-        A94 = new javax.swing.JButton();
-        A95 = new javax.swing.JButton();
-        A96 = new javax.swing.JButton();
-        A97 = new javax.swing.JButton();
-        A98 = new javax.swing.JButton();
-        A99 = new javax.swing.JButton();
-        A100 = new javax.swing.JButton();
-        FloorE = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        A101 = new javax.swing.JButton();
-        A102 = new javax.swing.JButton();
-        A103 = new javax.swing.JButton();
-        A104 = new javax.swing.JButton();
-        A105 = new javax.swing.JButton();
-        A106 = new javax.swing.JButton();
-        A107 = new javax.swing.JButton();
-        A108 = new javax.swing.JButton();
-        A109 = new javax.swing.JButton();
-        A110 = new javax.swing.JButton();
-        A111 = new javax.swing.JButton();
-        A112 = new javax.swing.JButton();
-        A113 = new javax.swing.JButton();
-        A114 = new javax.swing.JButton();
-        A115 = new javax.swing.JButton();
-        A116 = new javax.swing.JButton();
-        A117 = new javax.swing.JButton();
-        A118 = new javax.swing.JButton();
-        A119 = new javax.swing.JButton();
-        A120 = new javax.swing.JButton();
-        A121 = new javax.swing.JButton();
-        A122 = new javax.swing.JButton();
-        A123 = new javax.swing.JButton();
-        A124 = new javax.swing.JButton();
-        A125 = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
         NextButton = new javax.swing.JButton();
 
@@ -1613,796 +1565,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         Lockers.add(FloorC, "card4");
 
-        FloorD.setBackground(new java.awt.Color(41, 50, 65));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("JetBrainsMono NF Medium", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(224, 251, 252));
-        jLabel5.setText("Floor D");
-
-        A76.setBackground(new java.awt.Color(152, 193, 217));
-        A76.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A76.setForeground(new java.awt.Color(0, 0, 0));
-        A76.setText("D1");
-        A76.setPreferredSize(new java.awt.Dimension(100, 100));
-        A76.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A76ActionPerformed(evt);
-            }
-        });
-
-        A77.setBackground(new java.awt.Color(152, 193, 217));
-        A77.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A77.setForeground(new java.awt.Color(0, 0, 0));
-        A77.setText("D2");
-        A77.setPreferredSize(new java.awt.Dimension(100, 100));
-        A77.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A77ActionPerformed(evt);
-            }
-        });
-
-        A78.setBackground(new java.awt.Color(152, 193, 217));
-        A78.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A78.setForeground(new java.awt.Color(0, 0, 0));
-        A78.setText("D3");
-        A78.setPreferredSize(new java.awt.Dimension(100, 100));
-        A78.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A78ActionPerformed(evt);
-            }
-        });
-
-        A79.setBackground(new java.awt.Color(152, 193, 217));
-        A79.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A79.setForeground(new java.awt.Color(0, 0, 0));
-        A79.setText("D4");
-        A79.setPreferredSize(new java.awt.Dimension(100, 100));
-        A79.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A79ActionPerformed(evt);
-            }
-        });
-
-        A80.setBackground(new java.awt.Color(152, 193, 217));
-        A80.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A80.setForeground(new java.awt.Color(0, 0, 0));
-        A80.setText("D5");
-        A80.setPreferredSize(new java.awt.Dimension(100, 100));
-        A80.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A80ActionPerformed(evt);
-            }
-        });
-
-        A81.setBackground(new java.awt.Color(152, 193, 217));
-        A81.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A81.setForeground(new java.awt.Color(0, 0, 0));
-        A81.setText("D6");
-        A81.setPreferredSize(new java.awt.Dimension(100, 100));
-        A81.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A81ActionPerformed(evt);
-            }
-        });
-
-        A82.setBackground(new java.awt.Color(152, 193, 217));
-        A82.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A82.setForeground(new java.awt.Color(0, 0, 0));
-        A82.setText("D7");
-        A82.setPreferredSize(new java.awt.Dimension(100, 100));
-        A82.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A82ActionPerformed(evt);
-            }
-        });
-
-        A83.setBackground(new java.awt.Color(152, 193, 217));
-        A83.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A83.setForeground(new java.awt.Color(0, 0, 0));
-        A83.setText("D8");
-        A83.setPreferredSize(new java.awt.Dimension(100, 100));
-        A83.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A83ActionPerformed(evt);
-            }
-        });
-
-        A84.setBackground(new java.awt.Color(152, 193, 217));
-        A84.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A84.setForeground(new java.awt.Color(0, 0, 0));
-        A84.setText("D9");
-        A84.setPreferredSize(new java.awt.Dimension(100, 100));
-        A84.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A84ActionPerformed(evt);
-            }
-        });
-
-        A85.setBackground(new java.awt.Color(152, 193, 217));
-        A85.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A85.setForeground(new java.awt.Color(0, 0, 0));
-        A85.setText("D10");
-        A85.setPreferredSize(new java.awt.Dimension(100, 100));
-        A85.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A85ActionPerformed(evt);
-            }
-        });
-
-        A86.setBackground(new java.awt.Color(152, 193, 217));
-        A86.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A86.setForeground(new java.awt.Color(0, 0, 0));
-        A86.setText("D11");
-        A86.setPreferredSize(new java.awt.Dimension(100, 100));
-        A86.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A86ActionPerformed(evt);
-            }
-        });
-
-        A87.setBackground(new java.awt.Color(152, 193, 217));
-        A87.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A87.setForeground(new java.awt.Color(0, 0, 0));
-        A87.setText("D12");
-        A87.setPreferredSize(new java.awt.Dimension(100, 100));
-        A87.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A87ActionPerformed(evt);
-            }
-        });
-
-        A88.setBackground(new java.awt.Color(152, 193, 217));
-        A88.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A88.setForeground(new java.awt.Color(0, 0, 0));
-        A88.setText("D13");
-        A88.setPreferredSize(new java.awt.Dimension(100, 100));
-        A88.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A88ActionPerformed(evt);
-            }
-        });
-
-        A89.setBackground(new java.awt.Color(152, 193, 217));
-        A89.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A89.setForeground(new java.awt.Color(0, 0, 0));
-        A89.setText("D14");
-        A89.setToolTipText("");
-        A89.setPreferredSize(new java.awt.Dimension(100, 100));
-        A89.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A89ActionPerformed(evt);
-            }
-        });
-
-        A90.setBackground(new java.awt.Color(152, 193, 217));
-        A90.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A90.setForeground(new java.awt.Color(0, 0, 0));
-        A90.setText("D15");
-        A90.setPreferredSize(new java.awt.Dimension(100, 100));
-        A90.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A90ActionPerformed(evt);
-            }
-        });
-
-        A91.setBackground(new java.awt.Color(152, 193, 217));
-        A91.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A91.setForeground(new java.awt.Color(0, 0, 0));
-        A91.setText("D16");
-        A91.setPreferredSize(new java.awt.Dimension(100, 100));
-        A91.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A91ActionPerformed(evt);
-            }
-        });
-
-        A92.setBackground(new java.awt.Color(152, 193, 217));
-        A92.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A92.setForeground(new java.awt.Color(0, 0, 0));
-        A92.setText("D17");
-        A92.setPreferredSize(new java.awt.Dimension(100, 100));
-        A92.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A92ActionPerformed(evt);
-            }
-        });
-
-        A93.setBackground(new java.awt.Color(152, 193, 217));
-        A93.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A93.setForeground(new java.awt.Color(0, 0, 0));
-        A93.setText("D18");
-        A93.setPreferredSize(new java.awt.Dimension(100, 100));
-        A93.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A93ActionPerformed(evt);
-            }
-        });
-
-        A94.setBackground(new java.awt.Color(152, 193, 217));
-        A94.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A94.setForeground(new java.awt.Color(0, 0, 0));
-        A94.setText("D19");
-        A94.setPreferredSize(new java.awt.Dimension(100, 100));
-        A94.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A94ActionPerformed(evt);
-            }
-        });
-
-        A95.setBackground(new java.awt.Color(152, 193, 217));
-        A95.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A95.setForeground(new java.awt.Color(0, 0, 0));
-        A95.setText("D20");
-        A95.setPreferredSize(new java.awt.Dimension(100, 100));
-        A95.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A95ActionPerformed(evt);
-            }
-        });
-
-        A96.setBackground(new java.awt.Color(152, 193, 217));
-        A96.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A96.setForeground(new java.awt.Color(0, 0, 0));
-        A96.setText("D21");
-        A96.setPreferredSize(new java.awt.Dimension(100, 100));
-        A96.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A96ActionPerformed(evt);
-            }
-        });
-
-        A97.setBackground(new java.awt.Color(152, 193, 217));
-        A97.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A97.setForeground(new java.awt.Color(0, 0, 0));
-        A97.setText("D22");
-        A97.setPreferredSize(new java.awt.Dimension(100, 100));
-        A97.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A97ActionPerformed(evt);
-            }
-        });
-
-        A98.setBackground(new java.awt.Color(152, 193, 217));
-        A98.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A98.setForeground(new java.awt.Color(0, 0, 0));
-        A98.setText("D23");
-        A98.setPreferredSize(new java.awt.Dimension(100, 100));
-        A98.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A98ActionPerformed(evt);
-            }
-        });
-
-        A99.setBackground(new java.awt.Color(152, 193, 217));
-        A99.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A99.setForeground(new java.awt.Color(0, 0, 0));
-        A99.setText("D24");
-        A99.setPreferredSize(new java.awt.Dimension(100, 100));
-        A99.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A99ActionPerformed(evt);
-            }
-        });
-
-        A100.setBackground(new java.awt.Color(152, 193, 217));
-        A100.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A100.setForeground(new java.awt.Color(0, 0, 0));
-        A100.setText("D25");
-        A100.setPreferredSize(new java.awt.Dimension(100, 100));
-        A100.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A100ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FloorDLayout = new javax.swing.GroupLayout(FloorD);
-        FloorD.setLayout(FloorDLayout);
-        FloorDLayout.setHorizontalGroup(
-            FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FloorDLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FloorDLayout.createSequentialGroup()
-                        .addComponent(A81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorDLayout.createSequentialGroup()
-                        .addComponent(A76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorDLayout.createSequentialGroup()
-                        .addComponent(A86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A89, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorDLayout.createSequentialGroup()
-                        .addComponent(A91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A92, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A95, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorDLayout.createSequentialGroup()
-                        .addComponent(A96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A99, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FloorDLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(244, 244, 244))
-        );
-        FloorDLayout.setVerticalGroup(
-            FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FloorDLayout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(12, 12, 12)
-                .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A89, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A92, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A95, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A99, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-
-        Lockers.add(FloorD, "card5");
-
-        FloorE.setBackground(new java.awt.Color(41, 50, 65));
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("JetBrainsMono NF Medium", 0, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(224, 251, 252));
-        jLabel7.setText("Floor E");
-
-        A101.setBackground(new java.awt.Color(152, 193, 217));
-        A101.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A101.setForeground(new java.awt.Color(0, 0, 0));
-        A101.setText("E1");
-        A101.setPreferredSize(new java.awt.Dimension(100, 100));
-        A101.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A101ActionPerformed(evt);
-            }
-        });
-
-        A102.setBackground(new java.awt.Color(152, 193, 217));
-        A102.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A102.setForeground(new java.awt.Color(0, 0, 0));
-        A102.setText("E2");
-        A102.setPreferredSize(new java.awt.Dimension(100, 100));
-        A102.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A102ActionPerformed(evt);
-            }
-        });
-
-        A103.setBackground(new java.awt.Color(152, 193, 217));
-        A103.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A103.setForeground(new java.awt.Color(0, 0, 0));
-        A103.setText("E3");
-        A103.setPreferredSize(new java.awt.Dimension(100, 100));
-        A103.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A103ActionPerformed(evt);
-            }
-        });
-
-        A104.setBackground(new java.awt.Color(152, 193, 217));
-        A104.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A104.setForeground(new java.awt.Color(0, 0, 0));
-        A104.setText("E4");
-        A104.setPreferredSize(new java.awt.Dimension(100, 100));
-        A104.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A104ActionPerformed(evt);
-            }
-        });
-
-        A105.setBackground(new java.awt.Color(152, 193, 217));
-        A105.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A105.setForeground(new java.awt.Color(0, 0, 0));
-        A105.setText("E5");
-        A105.setPreferredSize(new java.awt.Dimension(100, 100));
-        A105.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A105ActionPerformed(evt);
-            }
-        });
-
-        A106.setBackground(new java.awt.Color(152, 193, 217));
-        A106.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A106.setForeground(new java.awt.Color(0, 0, 0));
-        A106.setText("E6");
-        A106.setPreferredSize(new java.awt.Dimension(100, 100));
-        A106.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A106ActionPerformed(evt);
-            }
-        });
-
-        A107.setBackground(new java.awt.Color(152, 193, 217));
-        A107.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A107.setForeground(new java.awt.Color(0, 0, 0));
-        A107.setText("E7");
-        A107.setPreferredSize(new java.awt.Dimension(100, 100));
-        A107.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A107ActionPerformed(evt);
-            }
-        });
-
-        A108.setBackground(new java.awt.Color(152, 193, 217));
-        A108.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A108.setForeground(new java.awt.Color(0, 0, 0));
-        A108.setText("E8");
-        A108.setPreferredSize(new java.awt.Dimension(100, 100));
-        A108.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A108ActionPerformed(evt);
-            }
-        });
-
-        A109.setBackground(new java.awt.Color(152, 193, 217));
-        A109.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A109.setForeground(new java.awt.Color(0, 0, 0));
-        A109.setText("E9");
-        A109.setPreferredSize(new java.awt.Dimension(100, 100));
-        A109.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A109ActionPerformed(evt);
-            }
-        });
-
-        A110.setBackground(new java.awt.Color(152, 193, 217));
-        A110.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A110.setForeground(new java.awt.Color(0, 0, 0));
-        A110.setText("E10");
-        A110.setPreferredSize(new java.awt.Dimension(100, 100));
-        A110.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A110ActionPerformed(evt);
-            }
-        });
-
-        A111.setBackground(new java.awt.Color(152, 193, 217));
-        A111.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A111.setForeground(new java.awt.Color(0, 0, 0));
-        A111.setText("E11");
-        A111.setPreferredSize(new java.awt.Dimension(100, 100));
-        A111.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A111ActionPerformed(evt);
-            }
-        });
-
-        A112.setBackground(new java.awt.Color(152, 193, 217));
-        A112.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A112.setForeground(new java.awt.Color(0, 0, 0));
-        A112.setText("E12");
-        A112.setPreferredSize(new java.awt.Dimension(100, 100));
-        A112.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A112ActionPerformed(evt);
-            }
-        });
-
-        A113.setBackground(new java.awt.Color(152, 193, 217));
-        A113.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A113.setForeground(new java.awt.Color(0, 0, 0));
-        A113.setText("E13");
-        A113.setPreferredSize(new java.awt.Dimension(100, 100));
-        A113.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A113ActionPerformed(evt);
-            }
-        });
-
-        A114.setBackground(new java.awt.Color(152, 193, 217));
-        A114.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A114.setForeground(new java.awt.Color(0, 0, 0));
-        A114.setText("E14");
-        A114.setToolTipText("");
-        A114.setPreferredSize(new java.awt.Dimension(100, 100));
-        A114.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A114ActionPerformed(evt);
-            }
-        });
-
-        A115.setBackground(new java.awt.Color(152, 193, 217));
-        A115.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A115.setForeground(new java.awt.Color(0, 0, 0));
-        A115.setText("E15");
-        A115.setPreferredSize(new java.awt.Dimension(100, 100));
-        A115.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A115ActionPerformed(evt);
-            }
-        });
-
-        A116.setBackground(new java.awt.Color(152, 193, 217));
-        A116.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A116.setForeground(new java.awt.Color(0, 0, 0));
-        A116.setText("E16");
-        A116.setPreferredSize(new java.awt.Dimension(100, 100));
-        A116.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A116ActionPerformed(evt);
-            }
-        });
-
-        A117.setBackground(new java.awt.Color(152, 193, 217));
-        A117.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A117.setForeground(new java.awt.Color(0, 0, 0));
-        A117.setText("E17");
-        A117.setPreferredSize(new java.awt.Dimension(100, 100));
-        A117.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A117ActionPerformed(evt);
-            }
-        });
-
-        A118.setBackground(new java.awt.Color(152, 193, 217));
-        A118.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A118.setForeground(new java.awt.Color(0, 0, 0));
-        A118.setText("E18");
-        A118.setPreferredSize(new java.awt.Dimension(100, 100));
-        A118.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A118ActionPerformed(evt);
-            }
-        });
-
-        A119.setBackground(new java.awt.Color(152, 193, 217));
-        A119.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A119.setForeground(new java.awt.Color(0, 0, 0));
-        A119.setText("E19");
-        A119.setPreferredSize(new java.awt.Dimension(100, 100));
-        A119.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A119ActionPerformed(evt);
-            }
-        });
-
-        A120.setBackground(new java.awt.Color(152, 193, 217));
-        A120.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A120.setForeground(new java.awt.Color(0, 0, 0));
-        A120.setText("E20");
-        A120.setPreferredSize(new java.awt.Dimension(100, 100));
-        A120.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A120ActionPerformed(evt);
-            }
-        });
-
-        A121.setBackground(new java.awt.Color(152, 193, 217));
-        A121.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A121.setForeground(new java.awt.Color(0, 0, 0));
-        A121.setText("E21");
-        A121.setPreferredSize(new java.awt.Dimension(100, 100));
-        A121.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A121ActionPerformed(evt);
-            }
-        });
-
-        A122.setBackground(new java.awt.Color(152, 193, 217));
-        A122.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A122.setForeground(new java.awt.Color(0, 0, 0));
-        A122.setText("E22");
-        A122.setPreferredSize(new java.awt.Dimension(100, 100));
-        A122.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A122ActionPerformed(evt);
-            }
-        });
-
-        A123.setBackground(new java.awt.Color(152, 193, 217));
-        A123.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A123.setForeground(new java.awt.Color(0, 0, 0));
-        A123.setText("E23");
-        A123.setPreferredSize(new java.awt.Dimension(100, 100));
-        A123.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A123ActionPerformed(evt);
-            }
-        });
-
-        A124.setBackground(new java.awt.Color(152, 193, 217));
-        A124.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A124.setForeground(new java.awt.Color(0, 0, 0));
-        A124.setText("E24");
-        A124.setPreferredSize(new java.awt.Dimension(100, 100));
-        A124.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A124ActionPerformed(evt);
-            }
-        });
-
-        A125.setBackground(new java.awt.Color(152, 193, 217));
-        A125.setFont(new java.awt.Font("JetBrainsMono NFP Medium", 0, 36)); // NOI18N
-        A125.setForeground(new java.awt.Color(0, 0, 0));
-        A125.setText("E25");
-        A125.setPreferredSize(new java.awt.Dimension(100, 100));
-        A125.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                A125ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FloorELayout = new javax.swing.GroupLayout(FloorE);
-        FloorE.setLayout(FloorELayout);
-        FloorELayout.setHorizontalGroup(
-            FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FloorELayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FloorELayout.createSequentialGroup()
-                        .addComponent(A106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorELayout.createSequentialGroup()
-                        .addComponent(A101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorELayout.createSequentialGroup()
-                        .addComponent(A111, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A112, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A113, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A114, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A115, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorELayout.createSequentialGroup()
-                        .addComponent(A116, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A117, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A118, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A119, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A120, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FloorELayout.createSequentialGroup()
-                        .addComponent(A121, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A122, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A123, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A124, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(A125, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FloorELayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(244, 244, 244))
-        );
-        FloorELayout.setVerticalGroup(
-            FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FloorELayout.createSequentialGroup()
-                .addComponent(jLabel7)
-                .addGap(12, 12, 12)
-                .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A111, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A113, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A114, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A112, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A115, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A116, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A118, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A119, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A117, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A120, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(A121, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FloorELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(A123, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A124, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A122, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(A125, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-
-        Lockers.add(FloorE, "card6");
-
         BackButton.setBackground(new java.awt.Color(61, 90, 128));
         BackButton.setFont(new java.awt.Font("JetBrainsMono NFM Medium", 1, 30)); // NOI18N
         BackButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -2475,6 +1637,114 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void handleLockerAction(int floor, int row, int col) {
+    Locker locker = lockers[floor][row][col];
+
+     if (!locker.isOccupied()) {
+
+        // Set the user name for the locker
+
+        locker.setUserName(JOptionPane.showInputDialog("Enter Username for Locker#" + locker.getId()));
+
+       
+        // Prompt to enter item name and quantity
+        String itemInput = JOptionPane.showInputDialog("Enter item name and quantity (format: name,quantity):");
+
+        if (itemInput != null && !itemInput.trim().isEmpty()) {
+
+            String[] itemParts = itemInput.split(",");
+
+            if (itemParts.length == 2) {
+
+                String itemName = itemParts[0].trim();
+                itemName = itemName.toLowerCase();
+                int quantity;
+
+                try {
+
+                    quantity = Integer.parseInt(itemParts[1].trim());
+
+                    Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity); // Create a new item
+
+                    locker.addItem(newItem); 
+
+                    JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
+
+                } catch (NumberFormatException e) {
+
+                    JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
+
+                }
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Invalid input format. Please use 'name,quantity'.");
+
+            }
+
+        }
+    } else {
+        // Show options to view locker info, add items, remove items, or clear locker
+        String[] options = {"View Locker Info", "Add Items", "Remove Items", "Clear Locker"};
+        int choice = JOptionPane.showOptionDialog(this, "Locker is occupied. Choose an action:",
+            "Locker Options", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+        switch (choice) {
+            case 0: // View Locker Info
+                StringBuilder info = new StringBuilder();
+                info.append("Locker ID: ").append(locker.getId()).append("\n");
+                info.append("User  Name: ").append(locker.getUserName()).append("\n");
+                info.append("Items in Locker:\n");
+                for (Items item : locker.getItems()) {
+                    if (item != null) {
+                        info.append("- ").append(item.getName()).append(" (Quantity: ").append(item.getFrequency()).append(")\n");
+                    }
+                }
+                JOptionPane.showMessageDialog(this, info.toString());
+                break;
+
+            case 1: // Add Items
+                String itemInput = JOptionPane.showInputDialog("Enter item name and quantity (format: name,quantity):");
+                if (itemInput != null && !itemInput.trim().isEmpty()) {
+                    String[] itemParts = itemInput.split(",");
+                    if (itemParts.length == 2) {
+                        String itemName = itemParts[0].trim();
+                        int quantity;
+                        try {
+                            quantity = Integer.parseInt(itemParts[1].trim());
+                            Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
+                            locker.addItem(newItem);
+                            JOptionPane.showMessageDialog(this, "Item added to locker.");
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Invalid input format. Please use 'name,quantity'.");
+                    }
+                }
+                break;
+
+            case 2: // Remove Items
+                String keyToRemove = JOptionPane.showInputDialog("Enter the key of the item to remove:");
+                if (keyToRemove != null && !keyToRemove.trim().isEmpty()) {
+                    locker.removeItem(keyToRemove);
+                    JOptionPane.showMessageDialog(this, "Item removed from locker.");
+                }
+                break;
+
+            case 3: // Clear Locker
+                locker.clearLocker();
+                JOptionPane.showMessageDialog(this, "Locker cleared.");
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+    
+    
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
           
        ContentPanel.removeAll();
@@ -2495,8 +1765,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LockerManagerButtonActionPerformed
 
     private void SpaceCheckerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpaceCheckerButtonActionPerformed
-        // Define the loc array (5 floors, 5 rows, 5 columns)
-        String[][][] loc = new String[5][5][5]; //String as of now but must be changed to locker
+     
         // Create a panel for space visualization
         JPanel spaceCheckerPanel = new JPanel(new BorderLayout());
         spaceCheckerPanel.setBackground(new Color(61, 90, 128));
@@ -2515,7 +1784,7 @@ public class MainFrame extends javax.swing.JFrame {
         floorsPanel.setBackground(new Color(61, 90, 128));
         floorsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add margin for the panel
         
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             // Create a panel for each floor
             JPanel floorPanel = new JPanel(new GridLayout(5, 5, 10, 10)); // 5x5 grid with equal gaps
             floorPanel.setBackground(new Color(41, 50, 65)); // Set background color for the floor panel
@@ -2540,7 +1809,7 @@ public class MainFrame extends javax.swing.JFrame {
                     JLabel lockerLabel = new JLabel(lockerContent, SwingConstants.CENTER);
                     lockerLabel.setFont(new Font("Jettbrains Mono Medium", Font.BOLD, 16)); // Slightly larger font
                     lockerLabel.setOpaque(true);
-                    lockerLabel.setBackground(loc[i][j][k] == null ? new Color(152, 193, 217) : new Color(247, 164, 164));
+                    lockerLabel.setBackground(!lockers[i][j][k].isOccupied()? new Color(152, 193, 217) : new Color(247, 164, 164));
                     lockerLabel.setForeground(Color.BLACK);
                     lockerLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK, 0));
                     lockerLabel.setPreferredSize(new java.awt.Dimension(50, 50)); // Ensure square lockers
@@ -2600,12 +1869,19 @@ public class MainFrame extends javax.swing.JFrame {
     
     
     private void AboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutButtonActionPerformed
+   // Remove all existing components from ContentPanel
     ContentPanel.removeAll();
+
+    // Create an instance of the AboutGui class
+    aboutGui aboutScreen = new aboutGui(); // instance of the AboutGui class
     
-    // Initialize the AboutPanel if it hasn't been set up yet
-    initializeAboutPanel();
-    
-    ContentPanel.add(AboutPanel);
+    // Use the createAboutPanel method to generate the About Panel
+    JPanel AboutPanel = aboutScreen.createAboutPanel();
+
+    // Add the AboutPanel to ContentPanel
+    ContentPanel.add(AboutPanel, BorderLayout.CENTER);
+
+    // Refresh the ContentPanel
     ContentPanel.repaint();
     ContentPanel.revalidate();
     }//GEN-LAST:event_AboutButtonActionPerformed
@@ -2714,7 +1990,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_NextButtonActionPerformed
 
     private void A1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A1ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 0, 0);
     }//GEN-LAST:event_A1ActionPerformed
 
     private void A3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A3ActionPerformed
@@ -3013,206 +2289,6 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_A75ActionPerformed
 
-    private void A76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A76ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A76ActionPerformed
-
-    private void A77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A77ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A77ActionPerformed
-
-    private void A78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A78ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A78ActionPerformed
-
-    private void A79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A79ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A79ActionPerformed
-
-    private void A80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A80ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A80ActionPerformed
-
-    private void A81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A81ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A81ActionPerformed
-
-    private void A82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A82ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A82ActionPerformed
-
-    private void A83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A83ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A83ActionPerformed
-
-    private void A84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A84ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A84ActionPerformed
-
-    private void A85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A85ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A85ActionPerformed
-
-    private void A86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A86ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A86ActionPerformed
-
-    private void A87ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A87ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A87ActionPerformed
-
-    private void A88ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A88ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A88ActionPerformed
-
-    private void A89ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A89ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A89ActionPerformed
-
-    private void A90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A90ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A90ActionPerformed
-
-    private void A91ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A91ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A91ActionPerformed
-
-    private void A92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A92ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A92ActionPerformed
-
-    private void A93ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A93ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A93ActionPerformed
-
-    private void A94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A94ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A94ActionPerformed
-
-    private void A95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A95ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A95ActionPerformed
-
-    private void A96ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A96ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A96ActionPerformed
-
-    private void A97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A97ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A97ActionPerformed
-
-    private void A98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A98ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A98ActionPerformed
-
-    private void A99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A99ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A99ActionPerformed
-
-    private void A100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A100ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A100ActionPerformed
-
-    private void A101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A101ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A101ActionPerformed
-
-    private void A102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A102ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A102ActionPerformed
-
-    private void A103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A103ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A103ActionPerformed
-
-    private void A104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A104ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A104ActionPerformed
-
-    private void A105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A105ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A105ActionPerformed
-
-    private void A106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A106ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A106ActionPerformed
-
-    private void A107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A107ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A107ActionPerformed
-
-    private void A108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A108ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A108ActionPerformed
-
-    private void A109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A109ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A109ActionPerformed
-
-    private void A110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A110ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A110ActionPerformed
-
-    private void A111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A111ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A111ActionPerformed
-
-    private void A112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A112ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A112ActionPerformed
-
-    private void A113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A113ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A113ActionPerformed
-
-    private void A114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A114ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A114ActionPerformed
-
-    private void A115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A115ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A115ActionPerformed
-
-    private void A116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A116ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A116ActionPerformed
-
-    private void A117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A117ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A117ActionPerformed
-
-    private void A118ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A118ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A118ActionPerformed
-
-    private void A119ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A119ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A119ActionPerformed
-
-    private void A120ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A120ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A120ActionPerformed
-
-    private void A121ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A121ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A121ActionPerformed
-
-    private void A122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A122ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A122ActionPerformed
-
-    private void A123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A123ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A123ActionPerformed
-
-    private void A124ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A124ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A124ActionPerformed
-
-    private void A125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A125ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_A125ActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -3250,34 +2326,8 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton A1;
     private javax.swing.JButton A10;
-    private javax.swing.JButton A100;
-    private javax.swing.JButton A101;
-    private javax.swing.JButton A102;
-    private javax.swing.JButton A103;
-    private javax.swing.JButton A104;
-    private javax.swing.JButton A105;
-    private javax.swing.JButton A106;
-    private javax.swing.JButton A107;
-    private javax.swing.JButton A108;
-    private javax.swing.JButton A109;
     private javax.swing.JButton A11;
-    private javax.swing.JButton A110;
-    private javax.swing.JButton A111;
-    private javax.swing.JButton A112;
-    private javax.swing.JButton A113;
-    private javax.swing.JButton A114;
-    private javax.swing.JButton A115;
-    private javax.swing.JButton A116;
-    private javax.swing.JButton A117;
-    private javax.swing.JButton A118;
-    private javax.swing.JButton A119;
     private javax.swing.JButton A12;
-    private javax.swing.JButton A120;
-    private javax.swing.JButton A121;
-    private javax.swing.JButton A122;
-    private javax.swing.JButton A123;
-    private javax.swing.JButton A124;
-    private javax.swing.JButton A125;
     private javax.swing.JButton A13;
     private javax.swing.JButton A14;
     private javax.swing.JButton A15;
@@ -3347,32 +2397,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton A73;
     private javax.swing.JButton A74;
     private javax.swing.JButton A75;
-    private javax.swing.JButton A76;
-    private javax.swing.JButton A77;
-    private javax.swing.JButton A78;
-    private javax.swing.JButton A79;
     private javax.swing.JButton A8;
-    private javax.swing.JButton A80;
-    private javax.swing.JButton A81;
-    private javax.swing.JButton A82;
-    private javax.swing.JButton A83;
-    private javax.swing.JButton A84;
-    private javax.swing.JButton A85;
-    private javax.swing.JButton A86;
-    private javax.swing.JButton A87;
-    private javax.swing.JButton A88;
-    private javax.swing.JButton A89;
     private javax.swing.JButton A9;
-    private javax.swing.JButton A90;
-    private javax.swing.JButton A91;
-    private javax.swing.JButton A92;
-    private javax.swing.JButton A93;
-    private javax.swing.JButton A94;
-    private javax.swing.JButton A95;
-    private javax.swing.JButton A96;
-    private javax.swing.JButton A97;
-    private javax.swing.JButton A98;
-    private javax.swing.JButton A99;
     private javax.swing.JButton AboutButton;
     private javax.swing.JPanel AboutPanel;
     private javax.swing.JButton BackButton;
@@ -3380,8 +2406,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel FloorA;
     private javax.swing.JPanel FloorB;
     private javax.swing.JPanel FloorC;
-    private javax.swing.JPanel FloorD;
-    private javax.swing.JPanel FloorE;
     private javax.swing.JButton HistoryButton;
     private javax.swing.JPanel HistoryPanel;
     private javax.swing.JButton HomeButton;
@@ -3399,7 +2423,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

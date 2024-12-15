@@ -1,6 +1,6 @@
 public class Items {
     private String name;
-    private String key = RandomKeyGenerator.generateRandomKey(5);
+    private String key;
     private int frequency;
 
     public Items(String name, String key, int frequency) {
@@ -9,7 +9,6 @@ public class Items {
         this.frequency = frequency;
     }
 
-    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -22,16 +21,11 @@ public class Items {
         return frequency;
     }
 
-    // Increment the frequency of the item
-    public void incrementFrequency() {
-        this.frequency++;
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
-    // Decrement the frequency of the item
-    public void decrementFrequency() {
-        if (this.frequency > 0) {
-            this.frequency--;
-        }
+    public void incrementFrequency(int quantity) {
+        this.frequency += quantity;
     }
-
 }
