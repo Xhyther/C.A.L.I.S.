@@ -83,7 +83,7 @@ public JPanel createDescriptionPanel() {
         teamPanel.add(createTeamMemberCard("BRUTAS, JOHN ARIES", "BS COMPUTER SCIENCE", "20", "MALILIPOT ALBAY"));
         teamPanel.add(createTeamMemberCard("MORGA, CHRISTIAN", "BS COMPUTER SCIENCE", "21", "DARAGA ALBAY"));
         teamPanel.add(createTeamMemberCard("NACARIO, CARL JOSEPH", "BS COMPUTER SCIENCE", "20", "LEGAZPI ALBAY"));
-        teamPanel.add(createTeamMemberCard("TABALAN, VHON MICHAEL", "BS COMPUTER SCIENCE", "20", "CAMARINES NORTE"));
+        teamPanel.add(createTeamMemberCard("TABALAN, VHON MICHAEL", "BS COMPUTER SCIENCE", "19", "CAMARINES NORTE"));
 
         return teamPanel;
     }

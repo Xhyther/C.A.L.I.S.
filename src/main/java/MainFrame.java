@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.*;
 
 //The main GUI frame
@@ -138,6 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
         A75 = new javax.swing.JButton();
         BackButton = new javax.swing.JButton();
         NextButton = new javax.swing.JButton();
+        SearchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(61, 90, 128));
@@ -1587,33 +1589,51 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        SearchButton.setBackground(new java.awt.Color(61, 90, 128));
+        SearchButton.setFont(new java.awt.Font("JetBrainsMono NF Medium", 0, 20)); // NOI18N
+        SearchButton.setForeground(new java.awt.Color(0, 0, 0));
+        SearchButton.setIcon(new javax.swing.ImageIcon("/home/xhyth3r/SoureCodes/Netbeans/CLIS/src/main/java/Icons/SearchIcon.png")); // NOI18N
+        SearchButton.setText("Search");
+        SearchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(61, 90, 128)));
+        SearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout LockerManagerPanelLayout = new javax.swing.GroupLayout(LockerManagerPanel);
         LockerManagerPanel.setLayout(LockerManagerPanelLayout);
         LockerManagerPanelLayout.setHorizontalGroup(
             LockerManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LockerManagerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Lockers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap(283, Short.MAX_VALUE)
+                .addGroup(LockerManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(LockerManagerPanelLayout.createSequentialGroup()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Lockers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(43, 43, 43))
         );
         LockerManagerPanelLayout.setVerticalGroup(
             LockerManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LockerManagerPanelLayout.createSequentialGroup()
                 .addGroup(LockerManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LockerManagerPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(Lockers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LockerManagerPanelLayout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LockerManagerPanelLayout.createSequentialGroup()
                         .addGap(287, 287, 287)
-                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LockerManagerPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(LockerManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(LockerManagerPanelLayout.createSequentialGroup()
+                                .addGap(249, 249, 249)
+                                .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Lockers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         ContentPanel.add(LockerManagerPanel, "card3");
@@ -1631,7 +1651,7 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-            .addComponent(ContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(ContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1642,33 +1662,20 @@ public class MainFrame extends javax.swing.JFrame {
     Locker locker = lockers[floor][row][col];
 
      if (!locker.isOccupied()) {
-
-        // Set the user name for the locker
-
         locker.setUserName(JOptionPane.showInputDialog("Enter Username for Locker#" + locker.getId()));
-
-       
-        // Prompt to enter item name and quantity
         String itemInput = JOptionPane.showInputDialog("Enter item name and quantity (format: name,quantity):");
 
         if (itemInput != null && !itemInput.trim().isEmpty()) {
 
             String[] itemParts = itemInput.split(",");
-
             if (itemParts.length == 2) {
-
                 String itemName = itemParts[0].trim();
                 itemName = itemName.toLowerCase();
                 int quantity;
-
                 try {
-
                     quantity = Integer.parseInt(itemParts[1].trim());
-
                     Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity); // Create a new item
-
                     locker.addItem(newItem); 
-
                     JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
 
                 } catch (NumberFormatException e) {
@@ -1715,7 +1722,7 @@ public class MainFrame extends javax.swing.JFrame {
                             quantity = Integer.parseInt(itemParts[1].trim());
                             Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
                             locker.addItem(newItem);
-                            JOptionPane.showMessageDialog(this, "Item added to locker.");
+                            JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
                         } catch (NumberFormatException e) {
                             JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
                         }
@@ -1962,23 +1969,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
 
-
-    // Function to upload an image for a specific frame
-    private void uploadImage(JLabel frameLabel) {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Image files", "jpg", "png", "jpeg"));
-
-        int result = fileChooser.showOpenDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            ImageIcon imageIcon = new ImageIcon(selectedFile.getAbsolutePath());
-
-            // Resize the image to fit the frame
-            Image image = imageIcon.getImage().getScaledInstance(frameLabel.getWidth(), frameLabel.getHeight(), Image.SCALE_SMOOTH);
-            frameLabel.setIcon(new ImageIcon(image));
-        }
-    }
-
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
         CardLayout cardLayout = (CardLayout) Lockers.getLayout();
         cardLayout.previous(Lockers);
@@ -1994,301 +1984,350 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_A1ActionPerformed
 
     private void A3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A3ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 0, 1);
     }//GEN-LAST:event_A3ActionPerformed
 
     private void A2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A2ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 0, 2);
     }//GEN-LAST:event_A2ActionPerformed
 
     private void A4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A4ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 0, 3);
     }//GEN-LAST:event_A4ActionPerformed
 
     private void A5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A5ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 0, 4);
     }//GEN-LAST:event_A5ActionPerformed
 
     private void A6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A6ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 1, 0);
     }//GEN-LAST:event_A6ActionPerformed
 
     private void A7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A7ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 1, 1);
     }//GEN-LAST:event_A7ActionPerformed
 
     private void A8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A8ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 1, 2);
     }//GEN-LAST:event_A8ActionPerformed
 
     private void A9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A9ActionPerformed
-        // TODO add your handling code here:
+          handleLockerAction(0, 1, 3);
     }//GEN-LAST:event_A9ActionPerformed
 
     private void A10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A10ActionPerformed
-        // TODO add your handling code here:
+          handleLockerAction(0, 1, 4);
     }//GEN-LAST:event_A10ActionPerformed
 
     private void A11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A11ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 2, 0);
     }//GEN-LAST:event_A11ActionPerformed
 
     private void A12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A12ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 2, 1);
     }//GEN-LAST:event_A12ActionPerformed
 
     private void A13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A13ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 2, 2);
     }//GEN-LAST:event_A13ActionPerformed
 
     private void A14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A14ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 2, 3);
     }//GEN-LAST:event_A14ActionPerformed
 
     private void A15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A15ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 2, 4);
     }//GEN-LAST:event_A15ActionPerformed
 
     private void A16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A16ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 3, 0);
     }//GEN-LAST:event_A16ActionPerformed
 
     private void A17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A17ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(0, 3, 1);
     }//GEN-LAST:event_A17ActionPerformed
 
     private void A18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A18ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 3, 2);
     }//GEN-LAST:event_A18ActionPerformed
 
     private void A19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A19ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 3, 3);
     }//GEN-LAST:event_A19ActionPerformed
 
     private void A20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A20ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(0, 3, 4);
     }//GEN-LAST:event_A20ActionPerformed
 
     private void A21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A21ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(0, 4, 0);
     }//GEN-LAST:event_A21ActionPerformed
 
     private void A22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A22ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 4, 1);
     }//GEN-LAST:event_A22ActionPerformed
 
     private void A23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A23ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(0, 4, 2);
     }//GEN-LAST:event_A23ActionPerformed
 
     private void A24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A24ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(0, 4, 3);
     }//GEN-LAST:event_A24ActionPerformed
 
     private void A25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A25ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(0, 4, 4);
     }//GEN-LAST:event_A25ActionPerformed
 
     private void A26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A26ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(1, 0, 0);
     }//GEN-LAST:event_A26ActionPerformed
 
     private void A27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A27ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 0, 1);
     }//GEN-LAST:event_A27ActionPerformed
 
     private void A28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A28ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 0, 2);
     }//GEN-LAST:event_A28ActionPerformed
 
     private void A29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A29ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 0, 3);
     }//GEN-LAST:event_A29ActionPerformed
 
     private void A30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A30ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 0, 4);
     }//GEN-LAST:event_A30ActionPerformed
 
     private void A31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A31ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(1, 1, 0);
     }//GEN-LAST:event_A31ActionPerformed
 
     private void A32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A32ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 1, 1);
     }//GEN-LAST:event_A32ActionPerformed
 
     private void A33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A33ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 1, 2);
     }//GEN-LAST:event_A33ActionPerformed
 
     private void A34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A34ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 1, 3);
     }//GEN-LAST:event_A34ActionPerformed
 
     private void A35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A35ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 1, 4);
     }//GEN-LAST:event_A35ActionPerformed
 
     private void A36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A36ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 2, 0);
     }//GEN-LAST:event_A36ActionPerformed
 
     private void A37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A37ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 2, 1);
     }//GEN-LAST:event_A37ActionPerformed
 
     private void A38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A38ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 2, 2);
     }//GEN-LAST:event_A38ActionPerformed
 
     private void A39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A39ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 2, 3);
     }//GEN-LAST:event_A39ActionPerformed
 
     private void A40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A40ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 2, 4);
     }//GEN-LAST:event_A40ActionPerformed
 
     private void A41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A41ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 3, 0);
     }//GEN-LAST:event_A41ActionPerformed
 
     private void A42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A42ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 3, 1);
     }//GEN-LAST:event_A42ActionPerformed
 
     private void A43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A43ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 3, 2);
     }//GEN-LAST:event_A43ActionPerformed
 
     private void A44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A44ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 3, 3);
     }//GEN-LAST:event_A44ActionPerformed
 
     private void A45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A45ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 3, 4);
     }//GEN-LAST:event_A45ActionPerformed
 
     private void A46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A46ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(1, 4, 0);
     }//GEN-LAST:event_A46ActionPerformed
 
     private void A47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A47ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 4, 1);
     }//GEN-LAST:event_A47ActionPerformed
 
     private void A48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A48ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 4, 2);
     }//GEN-LAST:event_A48ActionPerformed
 
     private void A49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A49ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 4, 3);
     }//GEN-LAST:event_A49ActionPerformed
 
     private void A50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A50ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(1, 4, 4);
     }//GEN-LAST:event_A50ActionPerformed
 
     private void A51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A51ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(2, 0, 0);
     }//GEN-LAST:event_A51ActionPerformed
 
     private void A52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A52ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(2, 0, 1);
     }//GEN-LAST:event_A52ActionPerformed
 
     private void A53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A53ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 0, 2);
     }//GEN-LAST:event_A53ActionPerformed
 
     private void A54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A54ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 0, 3);
     }//GEN-LAST:event_A54ActionPerformed
 
     private void A55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A55ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(2, 0, 4);
     }//GEN-LAST:event_A55ActionPerformed
 
     private void A56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A56ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(2, 1, 0);
     }//GEN-LAST:event_A56ActionPerformed
 
     private void A57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A57ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 1, 1);
     }//GEN-LAST:event_A57ActionPerformed
 
     private void A58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A58ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 1, 2);
     }//GEN-LAST:event_A58ActionPerformed
 
     private void A59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A59ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 1, 3);
     }//GEN-LAST:event_A59ActionPerformed
 
     private void A60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A60ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 1, 4);
     }//GEN-LAST:event_A60ActionPerformed
 
     private void A61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A61ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(2, 2, 0);
     }//GEN-LAST:event_A61ActionPerformed
 
     private void A62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A62ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 2, 1);
     }//GEN-LAST:event_A62ActionPerformed
 
     private void A63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A63ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 2, 2);
     }//GEN-LAST:event_A63ActionPerformed
 
     private void A64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A64ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 2, 3);
     }//GEN-LAST:event_A64ActionPerformed
 
     private void A65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A65ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 2, 4);
     }//GEN-LAST:event_A65ActionPerformed
 
     private void A66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A66ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 3, 0);
     }//GEN-LAST:event_A66ActionPerformed
 
     private void A67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A67ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 3, 1);
     }//GEN-LAST:event_A67ActionPerformed
 
     private void A68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A68ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 3, 2);
     }//GEN-LAST:event_A68ActionPerformed
 
     private void A69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A69ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(2, 3, 3);
     }//GEN-LAST:event_A69ActionPerformed
 
     private void A70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A70ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 3, 4);
     }//GEN-LAST:event_A70ActionPerformed
 
     private void A71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A71ActionPerformed
-        // TODO add your handling code here:
+       handleLockerAction(2, 4, 0);
     }//GEN-LAST:event_A71ActionPerformed
 
     private void A72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A72ActionPerformed
-        // TODO add your handling code here:
+        handleLockerAction(2, 4, 1);
     }//GEN-LAST:event_A72ActionPerformed
 
     private void A73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A73ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(2, 4, 2);
     }//GEN-LAST:event_A73ActionPerformed
 
     private void A74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A74ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(2, 4, 3);
     }//GEN-LAST:event_A74ActionPerformed
 
     private void A75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_A75ActionPerformed
-        // TODO add your handling code here:
+         handleLockerAction(2, 4, 4);
     }//GEN-LAST:event_A75ActionPerformed
 
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+        SearchingAction();
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
+  private void SearchingAction() {
+    // Prompt the user for the item to search
+    String itemToSearch = JOptionPane.showInputDialog("Enter the item to search:");
+
+    // Handle null or empty input
+    if (itemToSearch == null || itemToSearch.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Search canceled or invalid input.");
+        return;
+    }
+
+    // Normalize the input
+    itemToSearch = itemToSearch.trim().toLowerCase();
+
+    // List to store lockers containing the item
+    ArrayList<Locker> containsSearchItem = new ArrayList<>();
+
+    // Iterate through the 3D lockers array
+    for (int i = 0; i < lockers.length; i++) {
+        for (int j = 0; j < lockers[i].length; j++) {
+            for (int k = 0; k < lockers[i][j].length; k++) {
+                if (lockers[i][j][k].containsItem(itemToSearch)) {
+                    containsSearchItem.add(lockers[i][j][k]);
+                }
+            }
+        }
+    }
+
+    // Handle case where no lockers contain the item
+    if (containsSearchItem.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No lockers contain the item: " + itemToSearch);
+        return;
+    }
+
+    // Build the output message
+    StringBuilder info = new StringBuilder();
+    info.append("Lockers that contain '").append(itemToSearch).append("':\n");
+    for (Locker locker : containsSearchItem) {
+        info.append("Locker ID: ").append(locker.getId()).append("\n");
+    }
+
+    // Display the result
+    JOptionPane.showMessageDialog(this, info.toString());
+}
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2416,6 +2455,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton ManualButton;
     private javax.swing.JPanel ManualPanel;
     private javax.swing.JButton NextButton;
+    private javax.swing.JButton SearchButton;
     private javax.swing.JPanel Sidebar;
     private javax.swing.JButton SpaceCheckerButton;
     private javax.swing.JPanel SpaceCheckerPanel;

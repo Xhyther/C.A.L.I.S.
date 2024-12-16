@@ -69,4 +69,14 @@ public class Locker {
     public Items[] getItems() {
         return items;
     }
+    
+    public boolean containsItem(String itemName) {
+    for (Items item : items) {
+        if (item != null && item.getName().equalsIgnoreCase(itemName)) {
+            return true;
+        }
+    }
+    return false;
+}
+
 }
