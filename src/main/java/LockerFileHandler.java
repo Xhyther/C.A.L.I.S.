@@ -4,21 +4,27 @@ import java.util.List;
 
 public class LockerFileHandler {
     private static final String INPUT_FILE = "/home/xhyth3r/SoureCodes/Netbeans/CLIS/src/main/java/in/out_files/input.in";
-    private static final String OUTPUT_FILE = "/home/xhyth3r/SoureCodes/Netbeans/CLIS/src/main/java/in/out_files/out.out";
-
-    // Method to save all lockers to the file
-    // Method to save all lockers to the file
-    public static void saveLockersToFile(List<Locker> lockers) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_FILE))) {
+    
+     public static void saveLockersToFile(List<Locker> lockers) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(INPUT_FILE))) {
             for (Locker locker : lockers) {
-                writer.write(locker.toFileString());  // Corrected call to toFileString without any arguments
-                writer.newLine();  // Add a newline between lockers
+                // Only write lockers that have valid data
+                if (locker.getUserName() != null && !locker.getUserName().equals("Unknown") || !locker.getItems().isEmpty()) {
+                    writer.write(locker.getId() + "\n");
+                    writer.write(locker.getUserName() + "\n");
+
+                    // Save items for the locker
+                    for (Items item : locker.getItems()) {
+                        writer.write( item.getKey() + "," + item.getName() + "," + item.getFrequency()+ "\n");
+                    }
+                    writer.write("\n"); // Add a new line between lockers
+                }
             }
-            System.out.println("Lockers saved successfully.");
         } catch (IOException e) {
-            System.out.println("Error while saving lockers: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 
 
     // Method to load all lockers from the file

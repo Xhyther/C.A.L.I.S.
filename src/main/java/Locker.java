@@ -1,10 +1,11 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Locker {
+public class Locker{
     private int id;
     private String userName;
     private List<Items> items; // Use List<Item> instead of array
@@ -151,6 +152,10 @@ public class Locker {
 }
 
 
+    // Method to check if the locker is empty
+    public boolean isEmpty() {
+        return userName == null || userName.equals("Unknown") && items.isEmpty();
+    }
 
 
 
