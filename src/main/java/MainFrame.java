@@ -7,8 +7,13 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.*;
 
@@ -1763,34 +1768,39 @@ public class MainFrame extends javax.swing.JFrame {
 
      if (!locker.isOccupied()) {
         locker.setUserName(JOptionPane.showInputDialog("Enter Username for Locker#" + locker.getId()));
-        String itemInput = JOptionPane.showInputDialog("Enter item name and quantity (format: name,quantity):");
+        
+        String userName = getName();
+        
+        if (userName != null && !userName.trim().isEmpty() || userName != "Unknown" ) {
+            String itemInput = JOptionPane.showInputDialog("Enter item name and quantity (format: name,quantity):");
 
-        if (itemInput != null && !itemInput.trim().isEmpty()) {
+            if (itemInput != null && !itemInput.trim().isEmpty()) {
 
-            String[] itemParts = itemInput.split(",");
-            if (itemParts.length == 2) {
-                String itemName = itemParts[0].trim();
-                itemName = itemName.toLowerCase();
-                int quantity;
-                try {
-                    quantity = Integer.parseInt(itemParts[1].trim());
-                    Items newItem; // Create a new item
-                    newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
-                    locker.addItem(newItem); 
-                    JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
+                String[] itemParts = itemInput.split(",");
+                if (itemParts.length == 2) {
+                    String itemName = itemParts[0].trim();
+                    itemName = itemName.toLowerCase();
+                    int quantity;
+                    try {
+                        quantity = Integer.parseInt(itemParts[1].trim());
+                        Items newItem; // Create a new item
+                        newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
+                        locker.addItem(newItem); 
+                        JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
 
-                } catch (NumberFormatException e) {
+                    } catch (NumberFormatException e) {
 
-                    JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
+                        JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
+
+                    }
+
+                } else {
+
+                    JOptionPane.showMessageDialog(this, "Invalid input format. Please use 'name,quantity'.");
 
                 }
 
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Invalid input format. Please use 'name,quantity'.");
-
             }
-
         }
     } else {
         // Show options to view locker info, add items, remove items, or clear locker
@@ -1810,6 +1820,7 @@ public class MainFrame extends javax.swing.JFrame {
                     }
                 }
                 JOptionPane.showMessageDialog(this, info.toString());
+                writeLockerInfoToFile(locker);
                 break;
 
             case 1: // Add Items
@@ -1828,6 +1839,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 if (item != null && item.getName().equalsIgnoreCase(itemName)) {
                                     item.incrementFrequency(quantity);
                                     JOptionPane.showMessageDialog(this, "Item already exists. Quantity updated. Item ID: " + item.getKey());
+                                    writeLockerInfoToFile(locker);
                                     itemFound = true;
                                     break;
                                 }
@@ -1837,6 +1849,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
                                 locker.addItem(newItem);
                                 JOptionPane.showMessageDialog(this, "Item added to locker. Item ID: " + newItem.getKey());
+                                writeLockerInfoToFile(locker);
                             }
 
                             saveLockers();
@@ -1890,6 +1903,7 @@ public class MainFrame extends javax.swing.JFrame {
             case 3: // Clear Locker
                 locker.clearLocker();
                 JOptionPane.showMessageDialog(this, "Locker cleared.");
+                writeLockerInfoToFile(locker);
                 break;
 
             default:
@@ -1897,6 +1911,53 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 }
+   
+    private void writeLockerInfoToFile(Locker locker) {
+        if (locker == null) {
+            System.err.println("Locker object is null. Cannot write to file.");
+            return;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("/home/xhyth3r/SoureCodes/Netbeans/CLIS/src/main/java/in/out_files/History.txt", true))) {
+            System.out.println("Attempting to write to History.txt...");
+
+            writer.write("---------------------------------------------------------------");
+            writer.newLine();
+
+            Date thisDate = new Date();
+            SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/yyyy");
+            String formattedDate = dateForm.format(thisDate);
+            writer.write("Date: " + formattedDate);
+            writer.newLine();
+
+            writer.write("Locker ID: " + locker.getId());
+            writer.newLine();
+            writer.write("Username: " + locker.getUserName());
+            writer.newLine();
+
+            writer.write("Items in Locker:");
+            writer.newLine();
+            for (Items item : locker.getItems()) {
+                if (item != null) {
+                    writer.write("key: " + item.getKey());
+                    writer.newLine();
+                    writer.write("- " + item.getName() + " (Quantity: " + item.getFrequency() + ")");
+                    writer.newLine();
+                } else {
+                    System.err.println("Found a null item in locker.");
+                }
+            }
+
+            writer.write("---------------------------------------------------------------");
+            writer.newLine();
+            writer.newLine();
+            System.out.println("Locker info written to file successfully.");
+        } catch (IOException e) {
+            System.err.println("Error while writing locker info to file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     
     
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
@@ -2009,9 +2070,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void HistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryButtonActionPerformed
         ContentPanel.removeAll();
-       ContentPanel.add(HistoryPanel);
-       ContentPanel.repaint();
-       ContentPanel.revalidate();
+        // Create an instance of HistoryLogs
+        HistoryLogs logsScreen = new HistoryLogs("/home/xhyth3r/SoureCodes/Netbeans/CLIS/src/main/java/in/out_files/History.txt"); // Update this path accordingly
+
+        // Create and add the main panel which includes both the header and log panel
+        JPanel mainPanel = logsScreen.createMainPanel();
+        ContentPanel.add(mainPanel, BorderLayout.CENTER); // Add the main panel to the center
+
+        ContentPanel.repaint();
+        ContentPanel.revalidate();
     }//GEN-LAST:event_HistoryButtonActionPerformed
 
     private void ManualButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManualButtonActionPerformed
