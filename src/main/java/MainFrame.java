@@ -52,6 +52,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         // Load lockers from file
         loadLockers();
+        HomeButtonActionPerformed(null);
     }
     
     private void loadLockers() {
@@ -1853,12 +1854,20 @@ public class MainFrame extends javax.swing.JFrame {
     
     
     private void HomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeButtonActionPerformed
-          
-       ContentPanel.removeAll();
-       ContentPanel.add(HomePanel);
-       ContentPanel.repaint();
-       ContentPanel.revalidate();
-  
+
+
+    // Remove all existing components from ContentPanel
+    ContentPanel.removeAll();
+
+    // Create an instance of homeGui and generate the scrollable Home panel
+    homeGui homeScreen = new homeGui(); // Instance of the homeGui class
+    JPanel scrollableHomePanel = homeScreen.createHomePanel(); // Retrieve the scrollable Home panel
+    ContentPanel.add(scrollableHomePanel, BorderLayout.CENTER);
+
+    // Refresh the ContentPanel
+    ContentPanel.repaint();
+    ContentPanel.revalidate();
+
     }//GEN-LAST:event_HomeButtonActionPerformed
     
     private void LockerManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LockerManagerButtonActionPerformed

@@ -24,7 +24,6 @@ MainFrame$80.class
 MainFrame$32.class
 MainFrame$29.class
 MainFrame$47.class
-MainFrame$87.class
 RandomKeyGenerator.class
 MainFrame$72.class
 MainFrame$75.class
@@ -84,6 +83,7 @@ MainFrame$62.class
 MainFrame$82.class
 MainFrame$22.class
 MainFrame$10.class
+homeGui.class
 MainFrame$73.class
 MainFrame$65.class
 MainFrame$25.class
@@ -93,4 +93,3 @@ MainFrame$30.class
 MainFrame$50.class
 MainFrame$28.class
 MainFrame$68.class
-MainFrame$88.class
