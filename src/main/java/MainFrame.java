@@ -1821,9 +1821,25 @@ public class MainFrame extends javax.swing.JFrame {
                         int quantity;
                         try {
                             quantity = Integer.parseInt(itemParts[1].trim());
-                            Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
-                            locker.addItem(newItem);
-                            JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
+                            boolean itemFound = false;
+
+                            // Check if the item already exists in the locker
+                            for (Items item : locker.getItems()) {
+                                if (item != null && item.getName().equalsIgnoreCase(itemName)) {
+                                    item.incrementFrequency(quantity);
+                                    JOptionPane.showMessageDialog(this, "Item already exists. Quantity updated. Item ID: " + item.getKey());
+                                    itemFound = true;
+                                    break;
+                                }
+                            }
+
+                            if (!itemFound) {
+                                Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
+                                locker.addItem(newItem);
+                                JOptionPane.showMessageDialog(this, "Item added to locker. Item ID: " + newItem.getKey());
+                            }
+
+                            saveLockers();
                         } catch (NumberFormatException e) {
                             JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
                         }
@@ -1834,10 +1850,40 @@ public class MainFrame extends javax.swing.JFrame {
                 break;
 
             case 2: // Remove Items
-                String keyToRemove = JOptionPane.showInputDialog("Enter the key of the item to remove:");
-                if (keyToRemove != null && !keyToRemove.trim().isEmpty()) {
-                    locker.removeItem(keyToRemove);
-                    JOptionPane.showMessageDialog(this, "Item removed from locker.");
+                String removeInput = JOptionPane.showInputDialog("Enter item key or name, and quantity to remove (format: key/name,quantity):");
+                if (removeInput != null && !removeInput.trim().isEmpty()) {
+                    String[] removeParts = removeInput.split(",");
+                    if (removeParts.length == 2) {
+                        String identifier = removeParts[0].trim();
+                        int quantityToRemove;
+                        try {
+                            quantityToRemove = Integer.parseInt(removeParts[1].trim());
+                            boolean itemFound = false;
+
+                            for (Items item : locker.getItems()) {
+                                if (item != null && (item.getKey().equalsIgnoreCase(identifier) || item.getName().equalsIgnoreCase(identifier))) {
+                                    if (item.getFrequency() > quantityToRemove) {
+                                        item.setFrequency(item.getFrequency() - quantityToRemove);
+                                        JOptionPane.showMessageDialog(this, "Removed " + quantityToRemove + " of '" + item.getName() + "'.");
+                                    } else {
+                                        locker.removeItem(item.getKey());
+                                        JOptionPane.showMessageDialog(this, "Removed all of '" + item.getName() + "' from the locker.");
+                                    }
+                                    itemFound = true;
+                                    saveLockers();
+                                    break;
+                                }
+                            }
+
+                            if (!itemFound) {
+                                JOptionPane.showMessageDialog(this, "Item not found in the locker.");
+                            }
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(this, "Invalid quantity. Please enter a valid number.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Invalid input format. Use 'key/name,quantity'.");
+                    }
                 }
                 break;
 
