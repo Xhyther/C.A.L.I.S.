@@ -5,8 +5,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 //The main GUI frame
@@ -20,6 +23,20 @@ public class MainFrame extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.isAlwaysOnTop();
         this.setTitle("Content Alayzer and Locker Inventory System");
+        
+        
+        
+        // Add a window listener to save lockers on close
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                saveLockers();
+                System.exit(0);
+            }
+        });
+        
+        
         for (int i = 0; i < lockers.length; i++) {
 
             for (int j = 0; j < lockers[i].length; j++) {
@@ -30,6 +47,81 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         }
+        
+        // Load lockers from file
+        loadLockers();
+        
+    }
+    
+    private void loadLockers() {
+        List<Locker> loadedLockers = LockerFileHandler.loadLockersFromFile();
+
+        for (Locker locker : loadedLockers) {
+            placeLockerInArray(locker);
+        }
+    }
+
+
+
+    private void saveLockers() {
+
+        List<Locker> allLockers = getAllLockers(); // Implement this method to gather all lockers
+
+        LockerFileHandler.saveLockersToFile(allLockers);
+
+    }
+
+
+    private void placeLockerInArray(Locker locker) {
+        int id = locker.getId();
+
+        if (id < 1 || id > 75) { // Validate locker ID range
+            System.err.println("Invalid locker ID: " + id);
+            return;
+        }
+
+        // Calculate indices based on the locker ID
+        int floor = (id - 1) / 25;   // Determine the floor index (0-2)
+        int row = ((id - 1) % 25) / 5; // Determine the row index (0-4)
+        int col = (id - 1) % 5; // Determine the column index (0-4)
+
+        // Debugging: Print the calculated indices
+        System.out.println("Placing Locker ID: " + id);
+        System.out.println("Calculated indices - Floor: " + floor + ", Row: " + row + ", Col: " + col);
+
+        // Check if the locker is placed in the valid range
+        if (floor >= 0 && floor < lockers.length &&
+            row >= 0 && row < lockers[floor].length &&
+            col >= 0 && col < lockers[floor][row].length) {
+
+            lockers[floor][row][col] = locker; // Place the locker in the array
+            System.out.println("Locker placed successfully at indices (" + floor + "," + row + "," + col + ")");
+        } else {
+            System.err.println("Error: Locker ID " + id + " is out of bounds for indices (" + floor + "," + row + "," + col + ")");
+        }
+    }
+
+
+
+
+
+
+    private List<Locker> getAllLockers() {
+
+        List<Locker> allLockers = new ArrayList<>();
+        for (Locker[][] floor : lockers) {
+            for (Locker[] row : floor) {
+                for (Locker locker : row) {
+                    allLockers.add(locker);
+
+                }
+
+            }
+
+        }
+
+        return allLockers;
+
     }
 
     /**
@@ -586,6 +678,7 @@ public class MainFrame extends javax.swing.JFrame {
         ContentPanel.add(HistoryPanel, "card5");
 
         ManualPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ManualPanel.setPreferredSize(new java.awt.Dimension(1023, 1000));
 
         javax.swing.GroupLayout ManualPanelLayout = new javax.swing.GroupLayout(ManualPanel);
         ManualPanel.setLayout(ManualPanelLayout);
@@ -1936,7 +2029,8 @@ public class MainFrame extends javax.swing.JFrame {
                 int quantity;
                 try {
                     quantity = Integer.parseInt(itemParts[1].trim());
-                    Items newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity); // Create a new item
+                    Items newItem; // Create a new item
+                    newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
                     locker.addItem(newItem); 
                     JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
 

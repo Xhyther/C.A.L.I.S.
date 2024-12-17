@@ -70,7 +70,7 @@ class manualGui {
         itemsLabel.setFont(new Font("jetbrains mono medium", Font.BOLD, 23));
         itemsLabel.setVerticalAlignment(JLabel.TOP);
         // Set a preferred size for itemsLabel
-        itemsLabel.setPreferredSize(new java.awt.Dimension(500, 850)); // Adjust as needed
+        itemsLabel.setPreferredSize(new java.awt.Dimension(500, 1000)); // Adjust as needed
 
         // Create a main panel to hold both content and detailed items
         JPanel contentPanel = new JPanel();
@@ -169,7 +169,7 @@ class manualGui {
         detailedItemsLabel.setVerticalAlignment(JLabel.TOP);
         
         // Set a preferred size for the detailed items label if necessary
-        detailedItemsLabel.setPreferredSize(new java.awt.Dimension(500, 2000)); // Adjust as needed
+        detailedItemsLabel.setPreferredSize(new java.awt.Dimension(500, 2200)); // Adjust as needed
         
         // Add the detailed items label to the content panel
         contentPanel.add(detailedItemsLabel);
