@@ -1787,6 +1787,7 @@ public class MainFrame extends javax.swing.JFrame {
                         newItem = new Items(itemName, RandomKeyGenerator.generateRandomKey(5), quantity);
                         locker.addItem(newItem); 
                         JOptionPane.showMessageDialog(this, "Item added to locker. Item id: " + newItem.getKey());
+                        writeLockerInfoToFile(locker);
 
                     } catch (NumberFormatException e) {
 
@@ -1934,14 +1935,13 @@ public class MainFrame extends javax.swing.JFrame {
             writer.newLine();
             writer.write("Username: " + locker.getUserName());
             writer.newLine();
-
+            writer.newLine();
             writer.write("Items in Locker:");
             writer.newLine();
             for (Items item : locker.getItems()) {
                 if (item != null) {
                     writer.write("key: " + item.getKey());
-                    writer.newLine();
-                    writer.write("- " + item.getName() + " (Quantity: " + item.getFrequency() + ")");
+                    writer.write(" - " + item.getName() + " (Quantity: " + item.getFrequency() + ")");
                     writer.newLine();
                 } else {
                     System.err.println("Found a null item in locker.");
